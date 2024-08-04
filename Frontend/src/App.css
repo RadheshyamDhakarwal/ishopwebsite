@@ -1,0 +1,25 @@
+
+body::-webkit-scrollbar {
+  display: none;
+
+}
+.menu-scroll {
+  max-height: 520px;
+  overflow: hidden scroll;
+}
+
+.menu-scroll::-webkit-scrollbar {
+  /* background-color: #00D67F; */
+  width: 8px;
+}
+
+.menu-scroll::-webkit-scrollbar-track {
+  /* background-color: red; */
+  border-radius: 50px;
+}
+
+.menu-scroll::-webkit-scrollbar-thumb {
+  background-color: #6eafb5;
+  border-radius: 10px;
+  /* background-clip: content-box; */
+}
