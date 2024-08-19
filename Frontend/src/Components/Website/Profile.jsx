@@ -3,6 +3,8 @@ import ProfileTab from '../../Profile/ProfileTab';
 import { useDispatch, useSelector } from 'react-redux';
 import axios from 'axios';
 import { login } from '../../Reducers/User';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Profile = () => {
     const [localUser, setlocalUser] = useState({});
     const { user } = useSelector(store => store.user)
@@ -18,16 +20,20 @@ const Profile = () => {
             .then(
                 (success) => {
                     if (success.data.status == 1) {
-                        alert(success.data.msg);
+                        // alert(success.data.msg);
+                        toast.success(success.data.msg,{
+                            
+                        });
                         dispatch(login({ user: localUser }))
                     } else {
-                        alert(success.data.msg);
+                        // alert(success.data.msg);
+                        toast.error(success.data.msg)
                     }
                 }
             ).catch(
                 (error) => {
-                    console.log(error)
-                    alert(error.data.msg);
+                    // alert(error.data.msg);
+                    toast.error(error.data.msg)
                 }
             )
     }

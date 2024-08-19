@@ -1,6 +1,5 @@
 const express =require("express");
 const  mongoose  = require("mongoose");
-
 const cors=require('cors');
 const CategoryRouter = require("./Routers/CategoryRouter.js");
 const ColorRouter = require("./Routers/ColorRouter.js");
