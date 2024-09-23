@@ -6,7 +6,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { addTocart } from '../../Reducers/Cart';
 import { useDispatch, useSelector } from 'react-redux';
-import Loading from '../../Components/comman/Loading';
+import PageLoading from '../../Components/comman/PageLoading';
 
 const Home = () => {
     // const { category, product, proBaseUrl } = useContext(Context);
@@ -109,7 +109,7 @@ const Home = () => {
     }
 
     if (loading) {
-        return <Loading />
+        return <PageLoading />
     }
     return (
         <>
@@ -259,7 +259,7 @@ const Home = () => {
 
 
             </div>
-            ):( <Loading />)
+            ):( <PageLoading />)
            }
         </>
     );
