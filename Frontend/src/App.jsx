@@ -33,6 +33,7 @@ import ProfileTab from './Profile/ProfileTab';
 import Profile from './Components/Website/Profile';
 import ChangePassword from './Components/Website/ChangePassword';
 import Orders from './Components/Website/Orders';
+import ProfilePageUser from './Pages/Website/ProfilePageUser';
 function App() {
   const dispatch = useDispatch()
   useEffect(
@@ -54,6 +55,10 @@ function App() {
           {
             path: "",
             element: <Home />
+          },
+          {
+path:"Userprofile",
+element:<ProfilePageUser/>
           },
           {
             path: "Store/:slug?",

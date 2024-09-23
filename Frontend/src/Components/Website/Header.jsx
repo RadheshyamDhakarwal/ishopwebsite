@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-// import { BiUser } from "react-icons/bi";
-// import { FiSearch } from "react-icons/fi"
+import { CgProfile } from "react-icons/cg";
 import { FaBars } from "react-icons/fa"
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -41,7 +40,7 @@ const Header = () => {
     return (
         <>
             <div className='w-full md:py-3 bg-white sticky top-0 shadow z-[999999]'>
-                <div className="container md:flex hidden justify-between ">
+                <div className=" container-fluid md:flex hidden justify-between   mx-20">
                     <div className='flex  items-center gap-[10px]'>
                         <span>EN</span>
                         <div className='down-arrow coursor-pointer'>
@@ -60,12 +59,15 @@ const Header = () => {
                         </Link>
                         <span className='text-orange-500'>{cart.length} Item</span>
 
-                        {/* <span className='opacity-[0.5]'>$998</span> */}
+                        <Link to={"/Userprofile"}>
+                            <CgProfile className='text-2xl' />
+                        </Link>
+                        {/* <i class="bi bi-person-lines-fill"></i> */}
                         {
                             user == null
                                 ?
                                 <>
-                                    <span>My Profile</span>
+                                    {/* <span>My Profile</span> */}
                                     <Link to={"/loginWebsite"}>
                                         <button type="button" className="text-dark flex gap-2  hover:bg-blue-800  font-medium rounded-full text-1xl px-4 py-1 text-center  hover:text-white  dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                             {/* <BiUser /> */}
@@ -78,9 +80,9 @@ const Header = () => {
                                 </>
                                 :
                                 <>
-                                    <Link to={"/profiletab"}>
+                                    {/* <Link to={"/profiletab"}>
                                         <span>{user.name}</span>
-                                    </Link>
+                                    </Link> */}
 
                                     <button type="button" onClick={() => {
                                         localStorage.removeItem("cart")
@@ -128,7 +130,7 @@ const Header = () => {
             <div className=''>
                 <ul id='myList' className={`responsivee-menu flex md:hidden   w-full items-center top-0 duration-500  flex-col fixed pt-20 gap-5 ${toggle ? 'left-[0%] opacity-1' : ' opacity-0 left-[-100%]'} `}>
                     <div className="relative text-gray-600">
-                        <input type="search"  id='myInput' name="serch" placeholder="Search" className="bg-white w-[350px] h-14 px-5 pr-10 rounded-full text-sm focus:outline-none"
+                        <input type="search" id='myInput' name="serch" placeholder="Search" className="bg-white w-[350px] h-14 px-5 pr-10 rounded-full text-sm focus:outline-none"
                         />
                         <button type="submit" className="absolute right-0 top-0 mt-5 mr-4">
                             <svg className="h-6 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" id="Capa_1" x="0px" y="0px" viewBox="0 0 56.966 56.966" style={{ enableBackground: "new 0 0 56.966 56.966" }} xmlSpace="preserve" width="512px" height="512px"
@@ -141,7 +143,7 @@ const Header = () => {
                         menu.map(
                             (m, i) => {
                                 return (
-                                    <li  className='text-3xl font-semibold mt-6' key={i}>
+                                    <li className='text-3xl font-semibold mt-6' key={i}>
                                         <Link to={m.url}>
                                             {m.name}
                                         </Link>
