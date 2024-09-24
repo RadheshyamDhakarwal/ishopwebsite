@@ -49,3 +49,9 @@ height: 250px;
     overflow-y: auto;
     overflow-x: hidden;
   }
+  .card{
+    border-color: #eaeaea;
+   
+    margin-bottom: 0.875rem;
+    border-radius: 0.5rem;
+  }
