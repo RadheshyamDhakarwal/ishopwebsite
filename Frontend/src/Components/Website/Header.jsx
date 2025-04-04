@@ -62,7 +62,7 @@ const Header = () => {
                         <Link to={"/Userprofile"}>
                             <CgProfile className='text-2xl' />
                         </Link>
-                        {/* <i class="bi bi-person-lines-fill"></i> */}
+                        {/* <i className="bi bi-person-lines-fill"></i> */}
                         {
                             user == null
                                 ?

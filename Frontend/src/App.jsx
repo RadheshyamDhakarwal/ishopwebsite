@@ -34,6 +34,7 @@ import Profile from './Components/Website/Profile';
 import ChangePassword from './Components/Website/ChangePassword';
 import Orders from './Components/Website/Orders';
 import ProfilePageUser from './Pages/Website/ProfilePageUser';
+import ForGetPassword from './Pages/Website/ForGetPassword';
 function App() {
   const dispatch = useDispatch()
   useEffect(
@@ -57,8 +58,8 @@ function App() {
             element: <Home />
           },
           {
-path:"Userprofile",
-element:<ProfilePageUser/>
+            path: "Userprofile",
+            element: <ProfilePageUser />
           },
           {
             path: "Store/:slug?",
@@ -81,33 +82,33 @@ element:<ProfilePageUser/>
             element: <Cart />
           },
           {
-            path:"checkout",
-            element:<CheckOut/>
+            path: "checkout",
+            element: <CheckOut />
           },
           {
-            path:"order-success/:order_id",
-            element:<OrderSuccess/>
+            path: "order-success/:order_id",
+            element: <OrderSuccess />
           },
           {
-            path:"profiletab",
-            element:<ProfileTab/>
+            path: "profiletab",
+            element: <ProfileTab />
           },
           {
-            path:"profile",
-            children:[
+            path: "profile",
+            children: [
               {
-                path:"",
-                element:<Profile/>
+                path: "",
+                element: <Profile />
               },
               {
-                path:"my-Orders",
-                element:<Orders/>
+                path: "my-Orders",
+                element: <Orders />
               },
               {
-                path:"change-password",
-                element:<ChangePassword/>
+                path: "change-password",
+                element: <ChangePassword />
               }
-    
+
             ]
           }
         ]
@@ -116,10 +117,14 @@ element:<ProfilePageUser/>
         path: "/loginwebsite",
         element: <LoginWebSite />
       },
-      
+
       {
-        path:"/signup",
-        element:<SignupWebSite/>
+        path: "/signup",
+        element: <SignupWebSite />
+      },
+      {
+        path: "/forget-password",
+        element: <ForGetPassword />
       },
       {
         path: "/admin",
