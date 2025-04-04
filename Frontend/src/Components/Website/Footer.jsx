@@ -1,137 +1,86 @@
-import React from 'react';
-import Contact from '../../Components/Website/Contact';
+import React from "react";
+import { FaInstagram, FaFacebookF, FaTwitter } from "react-icons/fa";
+
 const Footer = () => {
-    const Infomation = [
-        "About Us",
-        "Information",
-        "Privacy Policy",
-        "Terms & Conditions"
-    ];
-    const Service = [
-        "About Us",
-        "Information",
-        "Privacy Policy",
-        "Terms & Conditions"
-    ];
-    const Extras = [
-        "About Us",
-        "Information",
-        "Privacy Policy",
-        "Terms & Conditions"
-    ];
-    const MyAccount = [
-        "About Us",
-        "Information",
-        "Privacy Policy",
-        "Terms & Conditions"
-    ];
-    const UserfulLinks = [
-        "About Us",
-        "Information",
-        "Privacy Policy",
-        "Terms & Conditions"
-    ];
-    const OurOffers = [
-        "About Us",
-        "Information",
-        "Privacy Policy",
-        "Terms & Conditions"
-    ];
-    const contact = [
-        {
-            img: "images/ishops.svg",
-            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever.Since the 1500s, when an unknown printer'
-        },
-        {
+  const footerData = [
+    {
+      title: "INFORMATION",
+      links: ["About me", "Contact me", "Orders and Returns", "Terms and Conditions "],
+    },
+    {
+      title: "DISCOVER",
+      links: ["iPhone", "Watch", "AirPods", "Accessories"],
+    },
+    {
+        title: "SERVICE",
+        links: ["My Account", "View Cart", "Track My Order ", "help"],
+      },
+    {
+      title: "LOCATE US",
+      details: [
+        "123 Demo Blvd, Miami, FL 4567",
+        "United States",
+        "+1 123-456-7890",
+        "mail@ishoproduct.com",
+      ],
+    },
+  ];
 
-            title: 'Follow Us',
-            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever.Since the 1500s, when an unknown printer'
-        },
-        {
-
-            title: 'Contact Us',
-            description: 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys standard dummy text ever.Since the 1500s, when an unknown printer'
-        },
-        // Add more help items as needed
-    ];
-
-    return (
-        <>
-            <div className="container-fulid shadow-2xl mt-6 ">
-                <div className="container justify-center lg:justify-between lg:w-auto flex flex-wrap gap-[45px] font-proxima-nova text-base leading-6 ">
-
-                    {
-                        contact.map(
-                            (contact, index) => (
-                                <Contact key={index} title={contact.title} img={contact.img} description={contact.description} />
-                            )
-                        )
-                    }
-                </div>
+  return (
+    <footer className="bg-gray-900 text-gray-300 py-10">
+      <div className=" mx-auto px-6 md:px-12 lg:px-20">
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5   gap-8">
+          {/* Logo & About */}
+          <div>
+            <h2 className="text-2xl font-semibold text-white">I-S!</h2>
+            <p className="mt-2 text-sm">
+              Pulvinar aenean dignissim porttitor 
+              sed risus urna, pretium quis
+              non id.
+            </p>
+            <div className="flex space-x-4 mt-4">
+              <FaInstagram className="text-xl cursor-pointer hover:text-gray-400" />
+              <FaFacebookF className="text-xl cursor-pointer hover:text-gray-400" />
+              <FaTwitter className="text-xl cursor-pointer hover:text-gray-400" />
             </div>
-            <div className='container-fulid shadow-2xl mt-6 bg-[#5D656B] text-white'>
-                <div className='container flex flex-wrap justify-center  lg:justify-between gap-4 lg:gap-8 py-8'>
-                    <div className='sm:justify-center lg:w-auto'>
-                        <h3 className='font-bold'>Infomation</h3>
-                        <ul className='mt-2'>
-                            {
-                                Infomation.map(
-                                    (link, index) => (
-                                        <li key={index} className='mb-2'>{link}</li>
-                                    )
-                                )
-                            }
-                        </ul>
-                    </div>
-                    <div className=' lg:w-auto'>
-                        <h3 className='font-bold'>Service</h3>
-                        <ul className='mt-2'>
-                            {Service.map((link, index) => (
-                                <li key={index} className='mb-2'>{link}</li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className=' lg:w-auto'>
-                        <h3 className='font-bold'>Extras</h3>
-                        <ul className='mt-2'>
-                            {Extras.map((link, index) => (
-                                <li key={index} className='mb-2'>{link}</li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className=' lg:w-auto'>
-                        <h3 className='font-bold'>My Account</h3>
-                        <ul className='mt-2'>
-                            {MyAccount.map((link, index) => (
-                                <li key={index} className='mb-2'>{link}</li>
-                            ))}
-                        </ul>
-                    </div>
-                    <div className=' lg:w-auto'>
-                        <h3 className='font-bold'>Userful Links</h3>
-                        <ul className='mt-2'>
-                            {
-                                UserfulLinks.map(
-                                    (link, index) => (
-                                        <li key={index} className='mb-2'>{link}</li>
-                                    )
-                                )
-                            }
-                        </ul>
-                    </div>
-                    <div className=' lg:w-auto'>
-                        <h3 className='font-bold'>Our Offers</h3>
-                        <ul className='mt-2'>
-                            {OurOffers.map((link, index) => (
-                                <li key={index} className='mb-2'>{link}</li>
-                            ))}
-                        </ul>
-                    </div>
-                </div>
+          </div>
 
+          {/* Dynamic Sections */}
+          {footerData.map((section, index) => (
+            <div key={index}>
+              <h3 className="text-lg font-semibold text-white">{section.title}</h3>
+              {section.links ? (
+                <ul className="mt-2 space-y-2 text-sm">
+                  {section.links.map((link, idx) => (
+                    <li key={idx} className="hover:text-gray-400 cursor-pointer">
+                      {link}
+                    </li>
+                  ))}
+                </ul>
+              ) : (
+                <p className="mt-2 text-sm space-y-1">
+                  {section.details.map((detail, idx) => (
+                    <span key={idx} className="block">{detail}</span>
+                  ))}
+                </p>
+              )}
             </div>
-        </>
-    );
-}
+          ))}
+        </div>
+
+        {/* Bottom Section */}
+        <div className="border-t border-gray-700 mt-8 pt-6 flex flex-col md:flex-row justify-between text-sm">
+          <p>© 2025  Product Seller. Powered by Product Seller</p>
+          <div className="flex space-x-4">
+            <img src="images/Visalogo.png" alt="Visa" />
+            <img src="images/Masterlogo.png" alt="Mastercard" />
+            <img src="images/Dicoverlogo.jpeg"  alt="Discover" />
+            {/* <img src="images/RupayLogo2.png" alt="Apple Pay" /> */}
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
 
 export default Footer;
