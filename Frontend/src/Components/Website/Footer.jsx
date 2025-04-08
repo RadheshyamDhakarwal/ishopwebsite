@@ -72,10 +72,7 @@ const Footer = () => {
         <div className="border-t border-gray-700 mt-8 pt-6 flex flex-col md:flex-row justify-between text-sm">
           <p>© 2025  Product Seller. Powered by Product Seller</p>
           <div className="flex space-x-4">
-            <img src="images/Visalogo.png" alt="Visa" />
-            <img src="images/Masterlogo.png" alt="Mastercard" />
-            <img src="images/Dicoverlogo.jpeg"  alt="Discover" />
-            {/* <img src="images/RupayLogo2.png" alt="Apple Pay" /> */}
+            <img src="images/all-payment-method.svg" alt="payment option" />
           </div>
         </div>
       </div>

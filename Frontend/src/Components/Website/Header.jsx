@@ -59,7 +59,7 @@ const Header = () => {
                         </Link>
                         <span className='text-orange-500'>{cart.length} Item</span>
 
-                        <Link to={"/Userprofile"}>
+                        <Link to={"/User-Profile-Tab"}>
                             <CgProfile className='text-2xl' />
                         </Link>
                         {/* <i className="bi bi-person-lines-fill"></i> */}
@@ -69,7 +69,7 @@ const Header = () => {
                                 <>
                                     {/* <span>My Profile</span> */}
                                     <Link to={"/loginWebsite"}>
-                                        <button type="button" className="text-dark flex gap-2  hover:bg-blue-800  font-medium rounded-full text-1xl px-4 py-1 text-center  hover:text-white  dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                        <button type="button" className="text-dark flex gap-2  hover:bg-[#007D88]  font-medium rounded-xl text-1xl px-4 py-1 text-center  hover:text-white bg-[#007d8826] dark:hover:bg-[#007D88] dark:focus:ring-[#007D88]">
                                             {/* <BiUser /> */}
                                             <img src="images/loginImg.svg" className='items-center py-1' width={20} height={20} alt="" />
                                             Login

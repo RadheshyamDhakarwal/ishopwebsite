@@ -38,7 +38,7 @@ const Iphone = () => {
                                 <h1 className='text-red-600  text-center'>${prodt.final} <del>${prodt.price}</del></h1>
                                 <Link to={`/store/product/${prodt.slug}`}>
                                     <div className=' absolute top-[100%]  left-[55px] group-hover:top-[70%]   duration-300  left-130px'>
-                                        <button type="button" className="text-white  bg-purple-700 hover:bg-purple-800 focus:outline-none  font-medium rounded-full text-sm px-5 py-2.5  mb-2 dark:bg-purple-400 dark:hover:bg-purple-700 dark:focus:ring-purple-700 ">
+                                        <button type="button" className="text-white  bg-[#007d8826] hover:bg-[#007d8826] focus:outline-none  font-medium rounded-full text-sm px-5 py-2.5  mb-2 dark:bg-[#007d8826] dark:hover:bg-[#007d8826] dark:focus:ring-[#007d8826] ">
                                             Buy now
                                         </button>
                                     </div>

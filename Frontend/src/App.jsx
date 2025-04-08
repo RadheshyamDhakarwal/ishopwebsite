@@ -58,8 +58,10 @@ function App() {
             element: <Home />
           },
           {
-            path: "Userprofile",
-            element: <ProfilePageUser />
+            path: "User-Profile-Tab",
+            // element: <ProfilePageUser />
+            element: <ProfileTab />
+
           },
           {
             path: "Store/:slug?",
@@ -90,15 +92,15 @@ function App() {
             element: <OrderSuccess />
           },
           {
-            path: "profiletab",
+            path: "User-Profile-Tab",
             element: <ProfileTab />
           },
           {
-            path: "profile",
+            path: "User-Profile",
             children: [
               {
                 path: "",
-                element: <Profile />
+                element: <ProfilePageUser />
               },
               {
                 path: "my-Orders",
