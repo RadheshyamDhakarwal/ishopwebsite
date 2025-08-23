@@ -1,15 +1,27 @@
 import React, { useState } from 'react';
 import { CgProfile } from "react-icons/cg";
 import { FaBars } from "react-icons/fa"
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlineShoppingCart } from 'react-icons/ai'
 import { AiOutlineClose } from "react-icons/ai";
 import { logout } from '../../Reducers/User';
 import { emptyCart } from '../../Reducers/Cart';
+import { ShoppingCart, User, Search, Menu, X, Heart, Package } from 'lucide-react';
+import { Badge, Button, Dropdown } from 'react-bootstrap';
+import { Input } from '../../Components/ui/input';
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from '../../Components/ui/dropdown-menu';
+
 const Header = () => {
     const { cart } = useSelector(Store => Store.cart)
     const { user } = useSelector(Store => Store.user)
+    const navigate = useNavigate()
     const [activecate, setActiveCate] = useState(undefined)
     const [toggle, setToggle] = useState(false);
     const dispatch = useDispatch();
@@ -32,45 +44,177 @@ const Header = () => {
             url: "/ipad"
         }
     ]
-    // const serachfun = () => {
-    //     let filter = document.getElementById('myInput').value;
-    //     let unlist=document.getElementById('myList')
-    //     let li=unlist.getElementsByTagName('li')
-    // }
+
+
+    const categories = [
+        { name: 'Clothing', href: '/products?category=clothing' },
+        { name: 'Accessories', href: '/products?category=accessories' },
+        { name: 'Home Decor', href: '/products?category=home-decor' },
+        { name: 'Jewelry', href: '/products?category=jewelry' },
+        { name: 'Footwear', href: '/products?category=footwear' },
+        { name: 'Bags', href: '/products?category=bags' },
+        { name: 'Art', href: '/products?category=art' },
+    ];
+
+
     return (
         <>
             <div className='w-full md:py-3 bg-white sticky top-0 shadow z-[999999]'>
-                <div className=" container-fluid md:flex hidden justify-between   mx-20">
-                    <div className='flex  items-center gap-[10px]'>
-                        <span>EN</span>
-                        <div className='down-arrow coursor-pointer'>
+                
+                <div className=" container  md:flex hidden justify-between mx-2  ">
+                    <div className="flex items-center justify-content-around gap-16">
+                        {/* Logo */}
+                        <div>
+                            <Link to="/" className="flex items-center space-x-2 gap-8">
+                            <div className="w-10 h-10 bg-gradient-primary rounded-full flex items-center justify-center">
+                                <Package className="h-6 w-6 text-primary-foreground" />
+                            </div>
+                            <div className="hidden sm:block">
+                                <h1 className="font-display text-2xl font-bold text-foreground">
+                                    Urban Ethnic Hub
+                                </h1>
+                                <p className="text-xs text-muted-foreground">Authentic • Modern • Global</p>
+                            </div>
+                        </Link>
 
                         </div>
-                        <span>$</span>
-                        <div className="down-arrow">
+                        {/* Desktop Navigation */}
+                        <nav className="hidden lg:flex items-center space-x-8 gap-8 ">
+                            <Link to="/" className="navbar-link">Home</Link>
+                            <DropdownMenu>
+                                <DropdownMenuTrigger className="navbar-link">
+                                    Categories
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent className="w-48 bg-white mt-7">
+                                    {categories.map((category) => (
+                                        <DropdownMenuItem key={category.name} asChild>
+                                            <Link to={category.href} className="w-full">
+                                                {category.name}
+                                            </Link>
+                                        </DropdownMenuItem>
+                                    ))}
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+                            <Link to="/products" className="navbar-link">All Products</Link>
+                            <Link to="/blog" className="navbar-link">Blog</Link>
+                            <Link to="/about" className="navbar-link">About</Link>
+                            <Link to="/contact" className="navbar-link">Contact</Link>
+                        </nav>
+
+                        {/* Search Bar */}
+                        <div className="hidden md:flex flex-1 max-w-md mx-8 gap-8">
+                            <div className="relative w-full">
+                                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                                <Input
+                                    placeholder="Search products..."
+                                    className="pl-10 w-full"
+                                />
+                            </div>
                         </div>
 
+                        {/* Actions */}
+                        <div className="flex items-center space-x-2 justify-end gap-5">
+                            {/* User Account */}
+                            <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                    <Button variant="ghost" size="sm" className="relative">
+                                        <User className="h-5 w-5" />
+                                        <span className="sr-only">User account</span>
+                                    </Button>
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent align="end" className="w-48 mt-4 bg-white">
+                                    {user ? (
+                                        <>
+                                            <DropdownMenuItem onClick={() => navigate('/profile')}>
+                                                Profile
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem onClick={() => navigate('/orders')}>
+                                                My Orders
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem onClick={() => navigate('/wishlist')}>
+                                                Wishlist
+                                            </DropdownMenuItem>
+                                            <DropdownMenuSeparator />
+                                            <DropdownMenuItem onClick={() => {
+                                                localStorage.removeItem("cart")
+                                                dispatch(emptyCart());
+                                                dispatch(logout())
+                                            }
+                                            } >
+                                                Logout
+                                            </DropdownMenuItem>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <DropdownMenuItem onClick={() => navigate('/loginWebsite')}>
+                                                Login
+                                            </DropdownMenuItem>
+                                            <DropdownMenuItem onClick={() => navigate('/register')}>
+                                                Register
+                                            </DropdownMenuItem>
+                                        </>
+                                    )}
+                                </DropdownMenuContent>
+                            </DropdownMenu>
+
+                            {/* Wishlist */}
+                            <Button variant="ghost" size="sm" onClick={() => navigate('/wishlist')}>
+                                <Heart className="h-5 w-5" />
+                                <span className="sr-only">Wishlist</span>
+                            </Button>
+
+                            {/* Cart */}
+                            <Button
+                                variant="ghost"
+                                size="sm"
+                                className="relative  "
+                                onClick={() => navigate('/cart')}
+                            >
+                                <ShoppingCart className="h-5 w-5" />
+                                {cart.length > 0 && (
+                                    <Badge className="absolute  text-white -top-3 -right-3 h-5 bg-[#007D88] w-5 rounded-full p-0 flex items-center justify-center text-xs">
+                                        {cart.length}
+                                    </Badge>
+                                )}
+                                <span className="sr-only">Shopping cart</span>
+                            </Button>
+
+                            {/* Mobile menu toggle */}
+                            {/* <Button
+                                variant="ghost"
+                                size="sm"
+                                className="lg:hidden"
+                                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            >
+                                {isMobileMenuOpen ? (
+                                    <X className="h-5 w-5" />
+                                ) : (
+                                    <Menu className="h-5 w-5" />
+                                )}
+                                <span className="sr-only">Toggle menu</span>
+                            </Button> */}
+                        </div>
                     </div>
-                    <div className='flex items-center gap-[15px]'>
+                    {/* <div className='flex items-center gap-[15px]'>
                         <span className='absolute bg-orange-500 top-[5px] xl:right-[394px] w-[15px] h-[15px]  text-white rounded-full flex justify-center md:right-[255px] 2xl:right-[384]px]  items-center'>{cart.length}</span>
                         <Link to={"/cart"}>
                             <AiOutlineShoppingCart className='coursor-pointer text-2xl' />
-                            {/* <img src="images/bag_icon.png" className='coursor-pointer' alt="" /> */}
+                            <img src="images/bag_icon.png" className='coursor-pointer' alt="" />
                         </Link>
                         <span className='text-orange-500'>{cart.length} Item</span>
 
                         <Link to={"/Userprofile"}>
                             <CgProfile className='text-2xl' />
                         </Link>
-                        {/* <i className="bi bi-person-lines-fill"></i> */}
+                        <i className="bi bi-person-lines-fill"></i>
                         {
                             user == null
                                 ?
                                 <>
-                                    {/* <span>My Profile</span> */}
+                                    
                                     <Link to={"/loginWebsite"}>
                                         <button type="button" className="text-dark flex gap-2  hover:bg-blue-800  font-medium rounded-full text-1xl px-4 py-1 text-center  hover:text-white  dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                                            {/* <BiUser /> */}
+                                            <BiUser />
                                             <img src="images/loginImg.svg" className='items-center py-1' width={20} height={20} alt="" />
                                             Login
                                         </button>
@@ -80,9 +224,9 @@ const Header = () => {
                                 </>
                                 :
                                 <>
-                                    {/* <Link to={"/profiletab"}>
+                                    <Link to={"/profiletab"}>
                                         <span>{user.name}</span>
-                                    </Link> */}
+                                    </Link>
 
                                     <button type="button" onClick={() => {
                                         localStorage.removeItem("cart")
@@ -97,8 +241,8 @@ const Header = () => {
                         }
 
 
-                        {/* <FiSearch className='ml-[30px]' /> */}
-                    </div>
+                        <FiSearch className='ml-[30px]' />
+                    </div> */}
                 </div>
 
             </div>

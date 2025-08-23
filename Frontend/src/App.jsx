@@ -35,6 +35,7 @@ import ChangePassword from './Components/Website/ChangePassword';
 import Orders from './Components/Website/Orders';
 import ProfilePageUser from './Pages/Website/ProfilePageUser';
 import ForGetPassword from './Pages/Website/ForGetPassword';
+import "./index.css";
 function App() {
   const dispatch = useDispatch()
   useEffect(
